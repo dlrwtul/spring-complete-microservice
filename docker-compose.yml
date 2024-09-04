@@ -45,6 +45,13 @@ services:
       - kafka
       - config-server
       - discovery-service
+  
+  second-service-ms:
+    image: lut-second-service-ms:dev-1.0.0
+    depends_on:
+      - kafka
+      - config-server
+      - discovery-service
 
   keycloak:
     image: quay.io/keycloak/keycloak:22.0.4

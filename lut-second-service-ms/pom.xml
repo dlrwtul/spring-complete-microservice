@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.wrld</groupId>
-	<artifactId>lut-service-ms</artifactId>
+	<artifactId>lut-second-service-ms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>lut-service-ms</name>
-	<description>lut service project</description>
+	<name>lut-second-service-ms</name>
+	<description>lut-second-service project</description>
 	<url/>
 	<licenses>
 		<license/>
