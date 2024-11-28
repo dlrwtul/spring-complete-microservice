@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: second-service-ms
+  labels:
+    app: second-service-ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: second-service-ms
+  template:
+    metadata:
+      labels:
+        app: second-service-ms
+    spec:
+      containers:
+        - image: lutwrld/lut-second-service-ms:dev-1.0.0
+          name: second-service-ms
+          env:
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: kafka-cluster:9092
+            - name: SPRING_KAFKA_CONSUMER_GROUP_ID
+              value: "group1"
+            - name: SPRING_KAFKA_CONSUMER_AUTO_OFFSET_RESET
+              value: "earliest"
+            - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+              value: "true"
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: second-service-ms
+spec:
+  selector:
+    app: second-service-ms
+  ports:
+    - protocol: TCP
+      port: 8006
+      targetPort: 8006
